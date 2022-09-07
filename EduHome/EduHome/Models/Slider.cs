@@ -15,5 +15,6 @@ namespace EduHome.Models
         public string Image { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
+        public bool IsDeactive { get; set; }
     }
 }

@@ -118,13 +118,36 @@ namespace EduHome.Areas.Admin.Controllers
                 return NotFound();
 
             }
-            Service service =await _db.Services.FirstOrDefaultAsync();
-            if (service==null)
+            Slider slider =await _db.Sliders.FirstOrDefaultAsync(x=>x.Id==id);
+            if (slider==null)
             {
                 return BadRequest();
             }
-            return View(service);
+            return View(slider);
         }
-
+        public async Task<IActionResult> Activity(int? id)
+        {
+            if (id==null)
+            {
+                return NotFound();
+            }
+            Slider slider =await _db.Sliders.FirstOrDefaultAsync(x => x.Id == id);
+            if (slider==null)
+            {
+                return BadRequest();
+            }
+            if (slider.IsDeactive)
+            {
+                slider.IsDeactive = false;
+            }
+            else
+            {
+                slider.IsDeactive = true;
+            }
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        
+        
     }
 }

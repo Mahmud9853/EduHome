@@ -3,9 +3,19 @@
 @{
     ViewData["Title"] = "Detail";
 }
+<div class="container ">
+            <h1 class="text-center mb-5">@Model.Title</h1>
+    <div class="row d-flex justify-content-around mb-5 p-3">
+        
+            <div class="col-md-6">
+                <img src="~/img/slider/@Model.Image" class="w-100" alt="Alternate Text" />
+            </div>
+            <div class="col-md-6">
+                <p>@Model.Subtitle</p>
 
-<h1>@Model.Title</h1>
-<p>@Model.Subtitle</p>
+            </div>
+        </div>
+    </div>
 <a class="btn btn-outline-info mx-2 btn-rounded" asp-controller="Service" asp-action="Index">go Back</a>
 
 
